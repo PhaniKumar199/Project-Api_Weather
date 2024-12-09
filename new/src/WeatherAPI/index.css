@@ -2,7 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #6dd5fa, #2980b9);
+    background: linear-gradient(to right, #6dd5fa, #dfa410);
     color: #fff;
   }
  
@@ -31,7 +31,7 @@ body {
     margin-left: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #3498db;
+    background-color: gray;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -52,11 +52,13 @@ body {
  
   .weather-info {
     margin-top: 20px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(111, 110, 110);
     padding: 20px;
     border-radius: 10px;
     display: inline-block;
-    text-align: left;
+    text-align: center;
+    box-shadow: 1px 2px 3px white, 
+    2px 3px 4px white;
   }
  
   .weather-info h2 {
