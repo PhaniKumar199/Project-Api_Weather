@@ -1,5 +1,5 @@
 import React, { useState } from "react";
- 
+ import './index.css';
 const API_KEY = "be8a610c0ccbe301f334023ca862d9ec";
  
 function Weather() {
@@ -67,7 +67,23 @@ if (error){
 <button onClick={fetchWeather}>Get Weather</button>
 </div>
 
-     
+  {loading && <p className="loading">Loading...</p>}
+      {error && <p className="error">{error}</p>}
+      {weatherData && (
+<div className="weather-info">
+<h2>
+            {weatherData.name}, {weatherData.sys.country}
+</h2>
+<img
+            src={getWeatherIcon(weatherData.weather[0].icon)}
+            alt={weatherData.weather[0].description}
+          />
+<p>{weatherData.weather[0].description}</p>
+<p>Temperature: {weatherData.main.temp}°C</p>
+<p>Humidity: {weatherData.main.humidity}%</p>
+<p>Wind Speed: {weatherData.wind.speed} m/s</p>
+</div>
+      )}
       
 </div>
 
