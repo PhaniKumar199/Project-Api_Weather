@@ -12,8 +12,40 @@ function Weather() {
 
   const [error, setError] = useState("");
  
-  
-
+  const fetchWeather = () => {
+    if (!city) {
+      setError("Please enter a city name.");
+      return;
+    }
+ 
+    setLoading(true);
+    setError("");
+    setWeatherData(null);
+ 
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("City not found");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setWeatherData(data);
+        setError("");
+      })
+      .catch((err) => {
+        setError(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+ 
+  const getWeatherIcon = (iconCode) => `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+ 
+if (error){
+  return <p>{error}</p>
+}
      
   return (
 <div className="weather-app">
